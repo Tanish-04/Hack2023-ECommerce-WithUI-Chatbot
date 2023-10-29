@@ -38,7 +38,7 @@ class DecathlonChatbot:
     def __init__(self):
         load_dotenv(find_dotenv())
         from memorybuffer import MemoryBuffer
-        self.memory  = MemoryBuffer.MemoryBuffer()
+        self.memory  = MemoryBuffer()
         self.embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
     def get_db_decathlon(_self):
