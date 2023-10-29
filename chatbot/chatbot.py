@@ -18,10 +18,12 @@ from langchain.prompts.chat import (
 
 from dotenv import find_dotenv, load_dotenv
 from getpass import getpass
-from chatbot import memorybuffer
+
 
 import streamlit as st
 import pinecone
+
+from chatbot.memorybuffer import MemoryBuffer
 
 HUGGINGFACE_API_TOKEN = st.secrets["HUGGINGFACE_API_TOKEN"]
 os.environ["HUGGINGFACE_API_TOKEN"] = HUGGINGFACE_API_TOKEN   
@@ -33,9 +35,10 @@ PINECONE_INDEX = "langchain-retrieval"
 
 
 class DecathlonChatbot:
+    
     def __init__(self):
         load_dotenv(find_dotenv())
-        self.memory  = memorybuffer.MemoryBuffer()
+        self.memory  = MemoryBuffer.MemoryBuffer()
         self.embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
     def get_db_decathlon(_self):
