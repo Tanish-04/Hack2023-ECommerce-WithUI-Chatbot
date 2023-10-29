@@ -23,7 +23,6 @@ from getpass import getpass
 import streamlit as st
 import pinecone
 
-from chatbot.memorybuffer import MemoryBuffer
 
 HUGGINGFACE_API_TOKEN = st.secrets["HUGGINGFACE_API_TOKEN"]
 os.environ["HUGGINGFACE_API_TOKEN"] = HUGGINGFACE_API_TOKEN   
@@ -38,6 +37,7 @@ class DecathlonChatbot:
     
     def __init__(self):
         load_dotenv(find_dotenv())
+        from chatbot.memorybuffer import MemoryBuffer
         self.memory  = MemoryBuffer.MemoryBuffer()
         self.embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
