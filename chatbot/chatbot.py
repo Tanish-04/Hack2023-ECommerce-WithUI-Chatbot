@@ -5,6 +5,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.llms import HuggingFaceHub
 
 from langchain.vectorstores import Pinecone
+from langchain.chains import RetrievalQA, ConversationalRetrievalChain
 
 from langchain.chains import LLMChain, ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferMemory
@@ -19,6 +20,7 @@ from langchain.prompts.chat import (
 from dotenv import find_dotenv, load_dotenv
 from getpass import getpass
 
+from langchain.retrievers import TFIDFRetriever
 
 import streamlit as st
 import pinecone
@@ -72,40 +74,76 @@ class DecathlonChatbot:
 
 
         # Template to use for the system message prompt
-        template = """
-            You are an assistant designed to answer customer queries on an e-commerce platform that sells retail products {docs}.
-            I also function as a chatbot, responding to user phrases like "Thank you", "Hello", etc.
-            First, I will classify the sentiment of the customer's question or statement.
-            I will use only the given information to answer the question, considering the sentiment of the customer's input.
-            If I lack the necessary information or can't find a suitable answer, I will respond with I'm sorry I do not have this answer."
-            If the input isn't a question, I will act as a chatbot assisting customers.
-            My answers will be brief yet detailed.
-
-            Please go ahead with your query or statement related to retail products or any other greetings, and I will respond accordingly!
-            """
+        #template = """
+        #    You are an assistant designed to answer customer queries on an e-commerce platform that sells retail products {docs}.
+        #    I also function as a chatbot, responding to user phrases like "Thank you", "Hello", etc.
+        #    First, I will classify the sentiment of the customer's question or statement.
+        #    I will use only the given information to answer the question, considering the sentiment of the customer's input.
+        #    If I lack the necessary information or can't find a suitable answer, I will respond with I'm sorry I do not have this answer."
+        #    If the input isn't a question, I will act as a chatbot assisting customers.
+        #    My answers will be brief yet detailed.
+        #  
+        #    Please go ahead with your query or statement related to retail products or any other greetings, and I will respond accordingly!
+        #    """
         
-        system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
+        template = """
+        Use the following context (delimited by <ctx></ctx>) and the chat history (delimited by <hs></hs>) to answer the question:
+        ------
+        <ctx>
+        {context}
+        </ctx>
+        ------
+        <hs>
+        {history}
+        </hs>
+        ------
+        {question}
+        Answer:
+        """
+
+        promptALL = PromptTemplate(
+        input_variables=["history", "context", "question"],
+        template=template,
+        )
+
+        system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
         # Human question prompt
         human_template = "Please respond accordingly to customer question : {question}"
         human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
-
-       
+     
         chat_prompt = ChatPromptTemplate.from_messages(
             [system_message_prompt, human_message_prompt]
         )
 
+        retriever = TFIDFRetriever.from_texts(
+        ["Our client, a gentleman named Mike, has purchased some running shoes"])
 
         #chain = LLMChain(llm=chat, prompt=chat_prompt)
-        conversation_buf = ConversationChain(
-            llm=chat,
-            memory=_self.memory,
-            prompt=chat_prompt)
+        #conversation_buf = ConversationChain(
+        #    llm=chat,
+        #    memory=_self.memory,
+        #    prompt=chat_prompt)
 
-        
+        qa = RetrievalQA.from_chain_type(
+        #llm=ChatOpenAI(),
+        llm=chat,
+        chain_type='stuff',
+        retriever=retriever,
+        verbose=True,
+        chain_type_kwargs={
+            "verbose": True,
+            "prompt": promptALL,
+            "memory": ConversationBufferMemory(
+                memory_key="history",
+                input_key="question"),
+        }
+        )
+
         try:
-            response = conversation_buf.predict(question=query) #,docs=docs_page_content
+            response = qa.run(question=query)
+            #conversation_buf.predict(question=query) #,docs=docs_page_content
             #_self.memory.add_message({"type": "query", "content": query})
             #_self.memory.add_message({"type": "response", "content": response})
 
