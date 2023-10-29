@@ -37,8 +37,9 @@ class DecathlonChatbot:
     
     def __init__(self):
         load_dotenv(find_dotenv())
-        from memorybuffer import MemoryBuffer
-        self.memory  = MemoryBuffer()
+        #from memorybuffer import MemoryBuffer
+        #self.memory  = MemoryBuffer()
+        self.memory = ConversationBufferMemory()
         self.embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
     def get_db_decathlon(_self):
@@ -99,14 +100,14 @@ class DecathlonChatbot:
         #chain = LLMChain(llm=chat, prompt=chat_prompt)
         conversation_buf = ConversationChain(
             llm=chat,
-            memory=_self.memory.get_messages(),
+            memory=_self.memory,
             prompt=chat_prompt)
 
         
         try:
             response = conversation_buf.predict(question=query,docs=docs_page_content)
-            _self.memory.add_message({"type": "query", "content": query})
-            _self.memory.add_message({"type": "response", "content": response})
+            #_self.memory.add_message({"type": "query", "content": query})
+            #_self.memory.add_message({"type": "response", "content": response})
 
             #chain.run(question=query, docs=docs_page_content)
 
