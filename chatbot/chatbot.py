@@ -105,7 +105,7 @@ class DecathlonChatbot:
 
         
         try:
-            response = conversation_buf.predict(question=query,docs=docs_page_content)
+            response = conversation_buf.predict(question=query) #,docs=docs_page_content
             #_self.memory.add_message({"type": "query", "content": query})
             #_self.memory.add_message({"type": "response", "content": response})
 
