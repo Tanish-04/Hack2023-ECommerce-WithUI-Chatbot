@@ -6,8 +6,8 @@ from chatbot import MaverickChatbot
 st.set_page_config(page_title="E-Commerce Assistant", page_icon='💬')
 
 with st.sidebar:
-    st.image("https://commons.wikimedia.org/wiki/File:Hackathon-llm-2023.png")
-    st.markdown('# 💬 Menu 🎿')
+    st.image("https://upload.wikimedia.org/wikipedia/commons/4/4c/Hackathon-llm-2023.png")
+    st.markdown('# 🤖 Menu ')
     st.markdown('''
     
     ### 🔮 Purpose
