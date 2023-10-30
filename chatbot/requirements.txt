@@ -4,6 +4,7 @@ watermark
 scikit-learn
 gTTS
 playsound
+pygobject
 pinecone_client
 python-dotenv
 streamlit_chat

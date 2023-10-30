@@ -150,7 +150,7 @@ class MaverickChatbot:
             return None
 
 
-    def text_to_speech(text):
+    def text_to_speech(_self,text):
         #try:
             # Convert the text to speech
             tts = gTTS(text=text, lang="en")
