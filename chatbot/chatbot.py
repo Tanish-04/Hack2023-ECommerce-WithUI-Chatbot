@@ -1,7 +1,7 @@
 
 import os
-from gtts import gTTS
-import pygame
+#from gtts import gTTS
+#import pygame
 
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
@@ -150,14 +150,14 @@ class MaverickChatbot:
             return None
 
 
-    def text_to_speech(_self,text):
+    #def text_to_speech(_self,text):
         #try:
             # Convert the text to speech
-            tts = gTTS(text=text, lang="en")
+            #tts = gTTS(text=text, lang="en")
 
             # Save the converted audio to a file
-            filename = "temp_audio.mp3"
-            tts.save(filename)
+            #filename = "temp_audio.mp3"
+            #tts.save(filename)
 
             #attempt 1
             #Initialize pygame mixer
