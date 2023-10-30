@@ -7,4 +7,3 @@ streamlit_chat
 streamlit_extras
 openai
 tiktoken
-scikit-learn
