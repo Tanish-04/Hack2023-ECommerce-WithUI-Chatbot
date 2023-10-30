@@ -160,10 +160,10 @@ class MaverickChatbot:
             tts.save(filename)
 
             # Play the saved file
-            playsound(filename)
+            #playsound(filename)
 
             # Optional: remove the temporary file after playing
-            os.remove(filename)
+            #os.remove(filename)
 
         #except ValueError as e:
             # Handle the error. 
