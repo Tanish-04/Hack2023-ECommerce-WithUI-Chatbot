@@ -35,16 +35,13 @@ PINECONE_ENV = "gcp-starter"
 PINECONE_INDEX = "langchain-retrieval"
 
 
-class DecathlonChatbot:
+class MaverickChatbot:
     
     def __init__(self):
         load_dotenv(find_dotenv())
-        #from memorybuffer import MemoryBuffer
-        #self.memory  = MemoryBuffer()
-        self.memory = ConversationBufferMemory()
         self.embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
-    def get_db_decathlon(_self):
+    def get_db_maverick(_self):
         pinecone.init(
             api_key=PINECONE_API_KEY, 
             environment=PINECONE_ENV  
@@ -74,44 +71,18 @@ class DecathlonChatbot:
 
 
         # Template to use for the system message prompt
-        #template = """
-        #    You are an assistant designed to answer customer queries on an e-commerce platform that sells retail products {docs}.
-        #    I also function as a chatbot, responding to user phrases like "Thank you", "Hello", etc.
-        #    First, I will classify the sentiment of the customer's question or statement.
-        #    I will use only the given information to answer the question, considering the sentiment of the customer's input.
-        #    If I lack the necessary information or can't find a suitable answer, I will respond with I'm sorry I do not have this answer."
-        #    If the input isn't a question, I will act as a chatbot assisting customers.
-        #    My answers will be brief yet detailed.
-        #  
-        #    Please go ahead with your query or statement related to retail products or any other greetings, and I will respond accordingly!
-        #    """
-        
-
         template = """
-        * You are an assistant designed to answer customer queries on an e-commerce platform that sells retail products {docs}.
-        * I also function as a chatbot, responding to user phrases like "Thank you", "Hello", etc.
-        * If I lack the necessary information or can't find a suitable answer, I will respond with I'm sorry I do not have this answer.
-        * If the input isn't a question, I will act as a chatbot assisting customers.
-        * My answers will be brief yet detailed. 
+            You are an assistant designed to answer customer queries on an e-commerce platform that sells retail products {docs}.
+            I also function as a chatbot, responding to user phrases like "Thank you", "Hello", etc.
+            First, I will classify the sentiment of the customer's question or statement.
+            I will use only the given information to answer the question, considering the sentiment of the customer's input.
+            If I lack the necessary information or can't find a suitable answer, I will respond with I'm sorry I do not have this answer."
+            If the input isn't a question, I will act as a chatbot assisting customers.
+            My answers will be brief yet detailed.
+          
+            Please go ahead with your query or statement related to retail products or any other greetings, and I will respond accordingly!
+            """
         
-        * Use the following context (delimited by <ctx></ctx>) and the chat history (delimited by <hs></hs>) to answer the question:
-        ------
-        <ctx>
-        {context}
-        </ctx>
-        ------
-        <hs>
-        {history}
-        </hs>
-        ------
-        {question}
-        Answer:
-        """
-
-        promptALL = PromptTemplate(
-        input_variables=["history", "context", "question"],
-        template=template,
-        )
 
         system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
@@ -123,37 +94,10 @@ class DecathlonChatbot:
             [system_message_prompt, human_message_prompt]
         )
 
-        retriever = TFIDFRetriever.from_texts(
-        ["Our client, a gentleman named Mike, has purchased some running shoes"])
-
-        #chain = LLMChain(llm=chat, prompt=chat_prompt)
-        #conversation_buf = ConversationChain(
-        #    llm=chat,
-        #    memory=_self.memory,
-        #    prompt=chat_prompt)
-
-        qa = RetrievalQA.from_chain_type(
-        #llm=ChatOpenAI(),
-        llm=chat,
-        chain_type='stuff',
-        retriever=retriever,
-        verbose=True,
-        chain_type_kwargs={
-            "verbose": True,
-            "prompt": promptALL,
-            "memory": ConversationBufferMemory(
-                memory_key="history",
-                input_key="question"),
-        }
-        )
+        chain = LLMChain(llm=chat, prompt=chat_prompt)
 
         try:
-            response = qa.run(question=query)
-            #conversation_buf.predict(question=query) #,docs=docs_page_content
-            #_self.memory.add_message({"type": "query", "content": query})
-            #_self.memory.add_message({"type": "response", "content": response})
-
-            #chain.run(question=query, docs=docs_page_content)
+            response = chain.run(question=query, docs=docs_page_content)
 
             return response
         except:
