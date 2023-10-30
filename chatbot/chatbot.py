@@ -102,7 +102,7 @@ class MaverickChatbot:
         system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
         # Human question prompt
-        human_template = "Respond to the following customer inquiry : {question}"
+        human_template = "Respond to the customer inquiry : {question}"
         human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
      
         chat_prompt = ChatPromptTemplate.from_messages(
