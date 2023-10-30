@@ -1,10 +1,10 @@
 langchain
 huggingface_hub
 watermark
+openai
+pinecone_client
 python-dotenv
 streamlit_chat
 streamlit_extras
 scikit-learn
-pinecone_client
-openai
 tiktoken
