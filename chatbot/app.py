@@ -10,15 +10,13 @@ with st.sidebar:
     st.markdown('# 🤖 Menu ')
     st.markdown('''
     
-    ### 🔮 Purpose
+    ### Purpose
 
     This AI assisstant Kamal is designed to improve customer experience related to searching products or services within an E-Commerce website.
 
     We believe this AI assisstant can help many customers worldwide.
 
     🏀🏓🏈🎳⚾🏒🥊⛳🤿🏏🎾🎿🏐⛸️🤖
-
-    This application intends to respond questions from customers based in this dataset.
 
     ###
     ''')
