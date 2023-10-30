@@ -3,6 +3,7 @@ huggingface_hub
 watermark
 scikit-learn
 gTTS
+pycairo
 playsound
 pygobject
 pinecone_client
