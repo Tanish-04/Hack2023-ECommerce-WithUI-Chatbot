@@ -70,7 +70,7 @@ with response_container:
         response = generate_response(user_input)
         st.session_state.past.append(user_input)
         st.session_state.generated.append(response)
-        engine = pyttsx3.init()
+        engine = pyttsx3.init(driverName='espeak')
         engine.say(response)
         # play the speech
         engine.runAndWait() 
