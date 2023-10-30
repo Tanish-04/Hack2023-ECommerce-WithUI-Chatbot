@@ -3,9 +3,7 @@ huggingface_hub
 watermark
 pinecone_client
 python-dotenv
-streamlit-chat
 streamlit_chat
-streamlit-extras
 streamlit_extras
 openai
 tiktoken
