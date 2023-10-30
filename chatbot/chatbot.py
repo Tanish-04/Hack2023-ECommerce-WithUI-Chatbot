@@ -156,7 +156,7 @@ class MaverickChatbot:
             tts = gTTS(text=text, lang="en")
 
             # Save the converted audio to a file
-            filename = "temp_audio.mp3"
+            filename = "../data/music/temp_audio.mp3"
             tts.save(filename)
 
             #Initialize pygame mixer
