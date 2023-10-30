@@ -4,7 +4,7 @@ watermark
 openai
 pinecone_client
 python-dotenv
-streamlit_chat
-streamlit_extras
+streamlit-chat
+streamlit-extras
 scikit-learn
 tiktoken
