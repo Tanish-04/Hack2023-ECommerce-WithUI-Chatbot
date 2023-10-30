@@ -56,6 +56,7 @@ def generate_response(prompt):
     response = response.replace("Mini ", "")
     response = response.replace("User ", "")
     response = response.replace("System.", "")
+    response = response.replace("SYSTEM:", "")
     response = response.replace("Assistant ", "")
 
 
