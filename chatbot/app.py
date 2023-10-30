@@ -40,7 +40,7 @@ response_container = st.container()
 
 
 def get_text():
-    question = st.text_input("Question? ", "", key="input")
+    question = st.text_input("Your inquiry", "", key="input")
     return question
 
 

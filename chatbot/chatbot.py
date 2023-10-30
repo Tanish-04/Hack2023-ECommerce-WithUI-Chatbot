@@ -5,11 +5,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.llms import HuggingFaceHub
 
 from langchain.vectorstores import Pinecone
-from langchain.chains import RetrievalQA, ConversationalRetrievalChain
 
-from langchain.chains import LLMChain, ConversationChain
-from langchain.chains.conversation.memory import ConversationBufferMemory
-from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
 
 from langchain.prompts.chat import (
     ChatPromptTemplate,
@@ -19,8 +16,6 @@ from langchain.prompts.chat import (
 
 from dotenv import find_dotenv, load_dotenv
 from getpass import getpass
-
-from langchain.retrievers import TFIDFRetriever
 
 import streamlit as st
 import pinecone
@@ -67,7 +62,7 @@ class MaverickChatbot:
         repo_id = "tiiuae/falcon-7b-instruct"
         chat = HuggingFaceHub(huggingfacehub_api_token=HUGGINGFACE_API_TOKEN, 
                             repo_id=repo_id, 
-                            model_kwargs={"temperature":0, "max_new_tokens":100})
+                            model_kwargs={"temperature":0.7, "max_new_tokens":100})
 
 
         # Template to use for the system message prompt
@@ -87,7 +82,7 @@ class MaverickChatbot:
         system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
         # Human question prompt
-        human_template = "Please respond accordingly to customer question : {question}"
+        human_template = "Respond to the following customer inquiry : {question}"
         human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
      
         chat_prompt = ChatPromptTemplate.from_messages(
