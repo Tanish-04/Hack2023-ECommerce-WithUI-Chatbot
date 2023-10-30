@@ -151,9 +151,9 @@ class MaverickChatbot:
 
 
     def text_to_speech(text):
-        try:
+        #try:
             # Convert the text to speech
-            tts = gTTS(text=text, lang="en", slow=False)
+            tts = gTTS(text=text, lang="en")
 
             # Save the converted audio to a file
             filename = "temp_audio.mp3"
@@ -165,9 +165,9 @@ class MaverickChatbot:
             # Optional: remove the temporary file after playing
             os.remove(filename)
 
-        except ValueError as e:
+        #except ValueError as e:
             # Handle the error. 
-            print(f"Error: {e}")
+        #    print(f"Error: {e}")
 
 
     #def transcriber_response_to_audio(_self, responseText):
