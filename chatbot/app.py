@@ -2,7 +2,6 @@ import streamlit as st
 from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from chatbot import MaverickChatbot
-import pyttsx3
 
 st.set_page_config(page_title="E-Commerce Assistant", page_icon='💬')
 
@@ -70,11 +69,8 @@ with response_container:
         response = generate_response(user_input)
         st.session_state.past.append(user_input)
         st.session_state.generated.append(response)
-        engine = pyttsx3.init(driverName='espeak')
-        engine.setProperty("rate", 300)
-        engine.say(response)
-        # play the speech
-        engine.runAndWait() 
+        chatbot = MaverickChatbot()
+        chatbot.text_to_speech(response)
 
     if st.session_state['generated']:
         for i in range(len(st.session_state['generated'])-1, -1, -1):

@@ -1,5 +1,8 @@
 
 import os
+from gtts import gTTS
+from playsound import playsound
+
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import HuggingFaceHub
@@ -146,6 +149,21 @@ class MaverickChatbot:
         except:
             return None
 
+
+
+    def text_to_speech(text, lang='en'):
+        # Convert the text to speech
+        tts = gTTS(text=text, lang=lang, slow=False)
+
+        # Save the converted audio to a file
+        filename = "temp_audio.mp3"
+        tts.save(filename)
+
+        # Play the saved file
+        playsound(filename)
+
+        # Optional: remove the temporary file after playing
+        os.remove(filename)
 
     #def transcriber_response_to_audio(_self, responseText):
             
