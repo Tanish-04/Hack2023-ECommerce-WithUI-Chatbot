@@ -26,7 +26,7 @@ with st.sidebar:
     
     
 if 'generated' not in st.session_state:
-    st.session_state['generated'] = ["👋🏻 Hello!"]
+    st.session_state['generated'] = ["👨‍💻 Hello!"]
 
 if 'past' not in st.session_state:
     st.session_state['past'] = ['']
