@@ -51,8 +51,16 @@ def generate_response(prompt):
     chatbot = MaverickChatbot()
     db = chatbot.get_db_maverick()
     response = chatbot.get_response_from_query(db, prompt)
+
+    #Here are some basic post-processing steps that can be applied to an AI model's outputs:
     response = response.replace("Mini ", "")
     response = response.replace("User ", "")
+
+    prohibited_words = ["fuck", "shit"]
+    for word in prohibited_words:
+        response = response.replace(word, "****")
+
+    response = response.strip()
     return response
 
 ## Conditional display of AI generated responses as a function of user provided prompts
