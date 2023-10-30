@@ -77,8 +77,9 @@ class MaverickChatbot:
         #    """
         
         template = """
-        [Kamal]: [Greeting]
-
+        You are a helpful AI assistant, that provides answer for question asked politely related to ecommerce retail products or services {docs}.
+        Your name is Kamal.
+        
         [Kamal]: I'm here to assist you with any questions or concerns you may have about our retail products and services.
 
         [Kamal]: Please feel free to ask me about:
