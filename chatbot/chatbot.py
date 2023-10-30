@@ -156,22 +156,23 @@ class MaverickChatbot:
             tts = gTTS(text=text, lang="en")
 
             # Save the converted audio to a file
-            filename = "../data/music/temp_audio.mp3"
+            filename = "temp_audio.mp3"
             tts.save(filename)
 
+            #attempt 1
             #Initialize pygame mixer
-            pygame.mixer.init()
+            #pygame.mixer.init()
                 
             # Load and play the saved audio file
-            pygame.mixer.music.load(filename)
-            pygame.mixer.music.play()
+            #pygame.mixer.music.load(filename)
+            #pygame.mixer.music.play()
 
             # Keep the program running until the audio finishes playing
-            while pygame.mixer.music.get_busy():
-                    pygame.time.Clock().tick(10)
+            #while pygame.mixer.music.get_busy():
+            #        pygame.time.Clock().tick(10)
 
 
-
+            #attempt 2
             # Play the saved file
             #playsound(filename)
 
