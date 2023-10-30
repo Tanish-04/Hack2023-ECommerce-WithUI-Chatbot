@@ -3,7 +3,3 @@ port = 80
 
 [theme]
 base="light"
-
-disable=[
-  'no-name-in-module'
-]
