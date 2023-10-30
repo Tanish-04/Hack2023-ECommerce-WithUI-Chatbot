@@ -4,8 +4,6 @@ port = 80
 [theme]
 base="light"
 
-[tool.pylint.'MESSAGES CONTROL']
-
 disable=[
   'no-name-in-module'
 ]
