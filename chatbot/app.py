@@ -30,8 +30,8 @@ with st.sidebar:
 if 'generated' not in st.session_state:
     st.session_state['generated'] = ["👋🏻 Hello! This is your AI assisstant Kamal, how can I help you ?"]
 
-#if 'past' not in st.session_state:
-#    st.session_state['past'] = ['GOOD BYE !']
+if 'past' not in st.session_state:
+    st.session_state['past'] = ['']
 
 # Layout of input/response containers
 input_container = st.container()
