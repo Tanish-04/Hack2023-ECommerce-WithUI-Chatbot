@@ -17,10 +17,9 @@ from langchain.prompts.chat import (
 from dotenv import find_dotenv, load_dotenv
 from getpass import getpass
 
-from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
-from datasets import load_dataset
-
-import torch
+#from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
+#from datasets import load_dataset
+#import torch
 
 import streamlit as st
 import pinecone
