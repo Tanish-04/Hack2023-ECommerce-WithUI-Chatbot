@@ -1,8 +1,0 @@
-langchain
-huggingface_hub
-watermark
-pinecone_client
-python-dotenv
-streamlit
-streamlit_chat
-streamlit_extras

@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from chatbot import MaverickChatbot
+from IPython.display import Audio
 
 st.set_page_config(page_title="E-Commerce Assistant", page_icon='💬')
 
@@ -69,7 +70,11 @@ with response_container:
         response = generate_response(user_input)
         st.session_state.past.append(user_input)
         st.session_state.generated.append(response)
-        
+        chatbot = MaverickChatbot()
+        speech  = chatbot.transcriber_response_to_audio(response)
+        if speech is not None:
+            Audio(speech, rate=16000)
+
     if st.session_state['generated']:
         for i in range(len(st.session_state['generated'])-1, -1, -1):
             message(st.session_state["generated"][i], key=str(i), avatar_style="bottts-neutral", seed=90)

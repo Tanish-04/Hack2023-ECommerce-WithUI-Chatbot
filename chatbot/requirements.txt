@@ -8,3 +8,12 @@ streamlit_chat
 streamlit_extras
 openai
 tiktoken
+transformers
+datasets
+soundfile
+speechbrain
+accelerate
+sentencepiece
+torch
+torchvision
+torchaudio --index-url https://download.pytorch.org/whl/cu118

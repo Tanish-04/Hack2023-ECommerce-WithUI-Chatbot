@@ -17,6 +17,11 @@ from langchain.prompts.chat import (
 from dotenv import find_dotenv, load_dotenv
 from getpass import getpass
 
+from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
+from datasets import load_dataset
+
+import torch
+
 import streamlit as st
 import pinecone
 
@@ -139,5 +144,27 @@ class MaverickChatbot:
             response = chain.run(question=query, docs=docs_page_content)
 
             return response
+        except:
+            return None
+
+
+    def transcriber_response_to_audio(_self, responseText):
+            
+        try:    
+            processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
+            model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
+
+            inputs = processor(text=responseText, return_tensors="pt")
+            
+            embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
+
+            speaker_embeddings = torch.tensor(embeddings_dataset[7306]["xvector"]).unsqueeze(0)
+
+            spectrogram = model.generate_speech(inputs["input_ids"], speaker_embeddings)
+
+            vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
+            speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
+            return speech
+        
         except:
             return None
