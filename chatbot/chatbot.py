@@ -67,7 +67,7 @@ class MaverickChatbot:
         repo_id = "tiiuae/falcon-7b-instruct"
         chat = HuggingFaceHub(huggingfacehub_api_token=HUGGINGFACE_API_TOKEN, 
                             repo_id=repo_id, 
-                            model_kwargs={"temperature":0.7, "max_new_tokens":100})
+                            model_kwargs={"temperature":0.7, "max_new_tokens":200})
 
 
         # Template to use for the system message prompt
@@ -148,23 +148,23 @@ class MaverickChatbot:
             return None
 
 
-    def transcriber_response_to_audio(_self, responseText):
+    #def transcriber_response_to_audio(_self, responseText):
             
-        try:    
-            processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
-            model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
+    #    try:    
+    #        processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
+    #        model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
 
-            inputs = processor(text=responseText, return_tensors="pt")
+    #        inputs = processor(text=responseText, return_tensors="pt")
             
-            embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
+    #        embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
 
-            speaker_embeddings = torch.tensor(embeddings_dataset[7306]["xvector"]).unsqueeze(0)
+    #        speaker_embeddings = torch.tensor(embeddings_dataset[7306]["xvector"]).unsqueeze(0)
 
-            spectrogram = model.generate_speech(inputs["input_ids"], speaker_embeddings)
+    #        spectrogram = model.generate_speech(inputs["input_ids"], speaker_embeddings)
 
-            vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
-            speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
-            return speech
+    #        vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
+    #        speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
+    #        return speech
         
-        except:
-            return None
+    #    except:
+    #        return None
