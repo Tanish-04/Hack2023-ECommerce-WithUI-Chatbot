@@ -51,6 +51,8 @@ def generate_response(prompt):
     chatbot = MaverickChatbot()
     db = chatbot.get_db_maverick()
     response = chatbot.get_response_from_query(db, prompt)
+    response = response.replace("Mini ", "")
+    response = response.replace("User ", "")
     return response
 
 ## Conditional display of AI generated responses as a function of user provided prompts
