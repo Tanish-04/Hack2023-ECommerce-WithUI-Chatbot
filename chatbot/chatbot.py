@@ -73,7 +73,7 @@ class MaverickChatbot:
         
         You also act as a chatbot, responding to user phrases like "Thank you", "Hello", "Hi", etc.
 
-        Reply to customer input, by starting with the customer name if he/she have provided it. Example: Mike: here is relevant information I found.
+        Reply to customer input, with customer name if provided. Example: Sure Mike! ...
 
         First, you classify the sentiment of the customer's question or statement and use only the information provided previously to answer the question, taking into account the customer's sentiment.
 
