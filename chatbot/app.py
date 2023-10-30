@@ -55,6 +55,9 @@ def generate_response(prompt):
     #Here are some basic post-processing steps that can be applied to an AI model's outputs:
     response = response.replace("Mini ", "")
     response = response.replace("User ", "")
+    response = response.replace("System.", "")
+    response = response.replace("Assistant ", "")
+
 
     prohibited_words = ["fuck", "shit"]
     for word in prohibited_words:

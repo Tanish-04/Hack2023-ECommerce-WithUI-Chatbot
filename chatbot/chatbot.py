@@ -17,10 +17,6 @@ from langchain.prompts.chat import (
 from dotenv import find_dotenv, load_dotenv
 from getpass import getpass
 
-#from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
-#from datasets import load_dataset
-#import torch
-
 import streamlit as st
 import pinecone
 
@@ -145,59 +141,3 @@ class MaverickChatbot:
             return response
         except:
             return None
-
-
-    #def text_to_speech(_self,text):
-        #try:
-            # Convert the text to speech
-            #tts = gTTS(text=text, lang="en")
-
-            # Save the converted audio to a file
-            #filename = "temp_audio.mp3"
-            #tts.save(filename)
-
-            #attempt 1
-            #Initialize pygame mixer
-            #pygame.mixer.init()
-                
-            # Load and play the saved audio file
-            #pygame.mixer.music.load(filename)
-            #pygame.mixer.music.play()
-
-            # Keep the program running until the audio finishes playing
-            #while pygame.mixer.music.get_busy():
-            #        pygame.time.Clock().tick(10)
-
-
-            #attempt 2
-            # Play the saved file
-            #playsound(filename)
-
-            # Optional: remove the temporary file after playing
-            #os.remove(filename)
-
-        #except ValueError as e:
-            # Handle the error. 
-        #    print(f"Error: {e}")
-
-
-    #def transcriber_response_to_audio(_self, responseText):
-            
-    #    try:    
-    #        processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
-    #        model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
-
-    #        inputs = processor(text=responseText, return_tensors="pt")
-            
-    #        embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
-
-    #        speaker_embeddings = torch.tensor(embeddings_dataset[7306]["xvector"]).unsqueeze(0)
-
-    #        spectrogram = model.generate_speech(inputs["input_ids"], speaker_embeddings)
-
-    #        vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
-    #        speech = model.generate_speech(inputs["input_ids"], speaker_embeddings, vocoder=vocoder)
-    #        return speech
-        
-    #    except:
-    #        return None
