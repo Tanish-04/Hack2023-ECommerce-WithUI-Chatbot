@@ -2,7 +2,7 @@ langchain
 huggingface_hub
 watermark
 scikit-learn
-pyttsx3 --upgrade
+pyttsx3
 pinecone_client
 python-dotenv
 streamlit_chat
