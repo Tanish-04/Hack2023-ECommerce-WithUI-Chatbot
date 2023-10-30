@@ -45,7 +45,7 @@ def get_text():
 
 
 with input_container:
-    st.markdown("💬 Welcome to Amazon.com AI assistant, how can I help you ?")
+    st.markdown("💬 Welcome my name is Kamal, I'm an E-commerce assistant, how can I help you ?")
     user_input = get_text()
 
 
