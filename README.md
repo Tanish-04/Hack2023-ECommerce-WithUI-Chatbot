@@ -9,8 +9,6 @@
   </div>
   
   <p>A Customer Service Chatbot Trained on Decathlon Maroc Data</p>
-    
-    </div>
 <br>
 
 ## 📝 Table of Contents
