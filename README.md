@@ -12,10 +12,6 @@
     
     </div>
 <br>
-<div align="center">
-      <a href="https://decathlon-chatbot.streamlit.app/"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg"/></a>
-      <img src="https://img.shields.io/github/stars/hamagistral/decathlon-chatbot?color=blue&style=social"/>
-</div>
 
 ## 📝 Table of Contents
 
