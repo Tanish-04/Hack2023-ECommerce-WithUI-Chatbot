@@ -11,18 +11,13 @@
   <p>A Customer Service Chatbot Trained on Decathlon Maroc Data</p>
 <be>
 
-<details>
-<summary>Table of Contents</summary>
+## 📝 Table of Contents
 
-- [Project Overview](#introduction)
-- [Sentiment Analysis & Chatbot](#parts)
-- [References](#refs)
-- [Technologies](#techs)
-- [Installation](#installation)
-- [Contact](#contact)
-
-</details>
-
+1. [Project Overview](#introduction)
+2. [Sentiment Analysis & Chatbot](#parts)
+3. [References](#refs)
+4. [Technologies](#techs)  
+5. [Installation](#installation)
 <hr>
 
 ### 💬 Chatbot Page
