@@ -9,10 +9,8 @@
   </div>
   
   <p>A Customer Service Chatbot Trained on Decathlon Maroc Data</p>
-<be>
 
 ## 📝 Table of Contents
-
 1. [Project Overview](#introduction)
 2. [Sentiment Analysis & Chatbot](#parts)
 3. [References](#refs)
