@@ -1,22 +1,16 @@
-<div align="center">
-  <a href="https://decathlon-chatbot.streamlit.app/">
-    <img src="https://github.com/Hamagistral/decathlon-chatbot/assets/66017329/aaffa207-9f03-42b5-8c1b-a0876bc9169b" alt="Banner" width="150"><br>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Decathlon_Logo.png/1200px-Decathlon_Logo.png" alt="Banner" width="150">
+![image](https://github.com/Tanish-04/Hack2023-ECommerce-WithUI-Chatbot/assets/63210891/41ffecea-6025-4e5f-9d2b-8db283d705ce)<div align="center">
+  <a href="https://wm2762smemmk2ypdmmxtnb.streamlit.app/">
   </a>
 
   <div id="user-content-toc">
     <ul>
-      <summary><h1 style="display: inline-block;">Decathlon Chatbot and Sentiment Analysis on Reviews</h1></summary>
+      <summary><h1 style="display: inline-block;">Kamal Chatbot</h1></summary>
     </ul>
   </div>
   
   <p>A Customer Service Chatbot Trained on Decathlon Maroc Data</p>
-    <a href="https://decathlon-chatbot.streamlit.app/" target="_blank">Live Preview</a>
-    🏓
-    <a href="https://youtu.be/GKkOpEjlfEo" target="_blank">Demo YouTube</a>
-    🔮
-    <a href="https://github.com/Hamagistral/DataEngineers-Glassdoor/issues" target="_blank">Request Feature</a>
-</div>
+    
+    </div>
 <br>
 <div align="center">
       <a href="https://decathlon-chatbot.streamlit.app/"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg"/></a>
@@ -34,15 +28,14 @@
 <hr>
 
 ### 💬 Chatbot Page
-![image](https://github.com/Hamagistral/decathlon-chatbot/assets/66017329/77945744-652c-4288-bc74-20f9060be7d9)
-
+![image](https://github.com/Tanish-04/Hack2023-ECommerce-WithUI-Chatbot/assets/63210891/94a17501-0f93-45e0-9297-f02de17e16c3)
 
 <a name="introduction"></a>
 ## 🔬 Project Overview :
 
 ### 🎯 Goal :
 
-This project consists of a sentiment analysis part for product reviews and a chatbot that interacts with customers of Decathlon Maroc, a company specializing in selling sports goods. The chatbot utilizes the GPT-3.5-turbo model from OpenAI to provide information and assistance to customers.
+This project consists of a sentiment analysis part for product reviews and a chatbot that interacts with customers. The chatbot utilizes the GPT-3.5-turbo model from OpenAI to provide information and assistance to customers.
 
 <a name="parts"></a>
 ## 🤖 Sentiment Analysis & Chatbot
@@ -51,31 +44,24 @@ This project consists of a sentiment analysis part for product reviews and a cha
 
 The sentiment analysis part focuses on analyzing product reviews. It follows the following steps:
 
-1. **Scraping:** The reviews are scraped from Decathlon Maroc's website using Beautiful Soup, extracting the necessary information for analysis like customer name, review date, review description, review rating etc... [Scraping Notebook](https://github.com/Hamagistral/decathlon-chatbot/blob/master/decathlon_scraper/scraper.ipynb)
+1. **Scraping:** The reviews are scraped from the Amazon website using Beautiful Soup, extracting the necessary information for analysis like customer name, review date, review description, review rating, etc...
+2. **Data Cleaning:** The scraped reviews are cleaned to remove any irrelevant or noisy data like texts or numeric values, ensuring that the analysis focuses on meaningful and valid content.
 
-2. **Data Cleaning:** The scraped reviews are cleaned to remove any irrelevant or noisy data like texts in arabic or numeric values, ensuring that the analysis focuses on meaningful and valid content.
+3. **Sentiment Analysis:** The Natural Language Toolkit (NLTK) library and Vader sentiment analysis are employed to assess the sentiment of the review descriptions. This process provides an understanding of the customers' opinions and sentiments towards specific products. 
 
-3. **Sentiment Analysis:** The Natural Language Toolkit (NLTK) library and Vader sentiment analysis are employed to assess the sentiment of the review descriptions. This process provides an understanding of the customers' opinions and sentiments towards specific products. [SIA Notebook](https://github.com/Hamagistral/decathlon-chatbot/blob/master/notebook/decathlon-sentiment-analysis.ipynb)
-
-#### 📋 Sentiment Analysis Steps :
-
-![sia-steps](https://github.com/Hamagistral/decathlon-chatbot/assets/66017329/96b474a9-78bd-442d-9ded-34176f3bd7e6)
 
 ### 2. 💬 Chatbot :
 
-The chatbot is designed to engage with customers and provide them with relevant information and assistance regarding various aspects of Decathlon Maroc's operations. It follows the subsequent steps:
+The chatbot is designed to engage with customers and provide them with relevant information and assistance regarding various aspects of Amazon operation. It follows the subsequent steps:
 
 1. **Data Extraction**: HTML files containing information about returns policies, warranty details, contact information, and other relevant topics are loaded using a WebBaseloader in Langchain.
 
-2. **Document Embedding**: The OpenAI Ada embedding model is utilized to convert the loaded documents into embeddings, enabling efficient search and retrieval of relevant information. [Documents Embedding Notebook](https://github.com/Hamagistral/decathlon-chatbot/blob/master/notebook/embeddings.ipynb)
+2. **Document Embedding**: The OpenAI Ada embedding model is utilized to convert the loaded documents into embeddings, enabling efficient search and retrieval of relevant information.
 
 3. **Vector Database:** The embeddings generated from the documents are loaded into a Pinecone vector database. This database facilitates similarity searches, allowing the chatbot to retrieve the most relevant parts of the documents based on customer queries.
 
-4. **Chatbot Interface:** A Streamlit application is developed with a chatbot interface, enabling direct interaction with customers. Customers can inquire about specific problems or request information, and the chatbot (gpt-3.5-model with custom template) leverages the Pinecone database to provide the most appropriate responses based on document similarity. [Chatbot Code](https://github.com/Hamagistral/decathlon-chatbot/blob/master/decathlon_chatbot/chatbot.py)
-
-#### 📝 Chatbot Architecture
-
-![chatbot-architecture](https://github.com/Hamagistral/decathlon-chatbot/assets/66017329/fbb158ad-7b8d-4a4f-a6da-94abf138bc8c)
+4. **Chatbot Interface:** A Streamlit application is developed with a chatbot interface, enabling direct interaction with customers. Customers can inquire about specific problems or request information, and the chatbot (gpt-3.5-model with custom template) leverages the Pinecone database to provide the most appropriate responses based on document similarity.
+   
 
 <a name="refs"></a>
 ## 📋 References
@@ -96,15 +82,12 @@ The chatbot is designed to engage with customers and provide them with relevant 
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
 <img src="https://user-images.githubusercontent.com/66017329/223900076-e1d5c1e5-7c4d-4b73-84e7-ae7d66149bc6.png" alt="Banner" width="100">
 
-## 🚨 Disclaimer
-
-This project is not affiliated with Decathlon Maroc, this is a personal project whose goal is primarily to apply Sentiment Analysis Techniques to real world product reviews and also develop a chatbot that is capable of interacting with a company's documentation and answering customers questions accordingly.
 
 <a name="installation"></a>
 ## 🖥️ Installation : 
 1. Clone the repository:
 
-```git clone https://github.com/Hamagistral/decathlon-chatbot.git```
+```git clone https://github.com/Tanish-04/Hack2023-ECommerce-WithUI-Chatbot```
 
 2. Install the required packages:
 
@@ -112,17 +95,12 @@ This project is not affiliated with Decathlon Maroc, this is a personal project 
 
 ### Usage : 
 
-1. Change directory to `decathlon_chatbot`:
+1. Change directory to `Hack2023-ECommerce-WithUI-Chatbot`:
 
-```cd decathlon_chatbot```
+```cd Hack2023-ECommerce-WithUI-Chatbot```
 
 2. Run the app:
 
 ```streamlit run app.py```
 
-<a name="contact"></a>
-## 📨 Contact Me
 
-[LinkedIn](https://www.linkedin.com/in/hamza-elbelghiti/) •
-[Website](https://Hamagistral.me) •
-[Gmail](hamza.lbelghiti@gmail.com)
